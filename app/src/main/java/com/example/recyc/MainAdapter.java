@@ -1,6 +1,8 @@
 package com.example.recyc;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,7 +78,7 @@ public class MainAdapter extends FirebaseRecyclerAdapter<MainModel,MainAdapter.m
             public void onClick(View v) {
                 final DialogPlus dialogPlus = DialogPlus.newDialog(holder.img.getContext())
                         .setContentHolder(new ViewHolder(R.layout.update_popup))
-                        .setExpanded(true,1100)
+                        .setExpanded(true,1050)
                         .create();
 
                 //dialogPlus.show();
@@ -119,9 +121,35 @@ public class MainAdapter extends FirebaseRecyclerAdapter<MainModel,MainAdapter.m
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
                                         Toast.makeText(holder.name.getContext(), "Error While Updating", Toast.LENGTH_SHORT).show();
+                                        dialogPlus.dismiss();
                                     }
                                 });
                     }
+                });
+
+                holder.btnDelete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(holder.name.getContext());
+                        builder.setTitle("Are you sure you want to delete");
+                        builder.setMessage("Deleted message cant be undon");
+
+                        builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+
+                        });
+                       builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(holder.name.getContext(), "Cancelled", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                       builder.show();
+                    }
+
                 });
 
             }
