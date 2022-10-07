@@ -16,7 +16,7 @@
             android:id="@+id/imgl"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
             android:src="@drawable/ic_launcher"
             app:civ_border_color="#FF000000"
             app:civ_border_width="2dp" />
@@ -53,6 +53,29 @@
             android:text="Email Id"
             android:textColor="#000"
             android:textSize="25sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/emailtext"
+            >
+            <Button
+                android:layout_width="173dp"
+                android:layout_height="wrap_content"
+                android:text="Edit"
+                android:textAllCaps="false"
+                android:layout_marginRight="5dp"
+                android:id="@+id/btnEdit"/>
+            <Button
+                android:layout_width="173dp"
+                android:layout_height="wrap_content"
+                android:text="Delete"
+                android:textAllCaps="false"
+                android:layout_marginLeft="15dp"
+                android:id="@+id/btnDelete"/>
+
+        </LinearLayout>
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
